@@ -1,0 +1,106 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+                <div formGroupName="customer" class="form-area">
+                    <h3>Customer Details</h3>
+
+                    <div class="row">
+                        <div class="col-md-2">First Name</div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="firstName" type="text">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">Last Name</div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="lastName" type="text">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">Email</div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="email" type="text">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+            <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+                <div formGroupName="shippingAddress" class="form-area">
+                    <h3>Shipping Details</h3>
+
+                    <div class="row">
+                        <div class="col-md-2">Street</div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="street" type="text">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">City</div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="city" type="text">
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-md-2">State</div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="state" type="text">
+                            </div>
+                        </div> -->
+
+                        <div class="col-md-2">Country</div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="country" type="text">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">Pin Code</div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="pinCode" type="text">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Stripe Elements Credit Card Section -->
+                <div formGroupName="creditCard" class="form-area">
+
+                    <h3>Credit or Debit Card</h3>
+
+                    <div id="card-element">
+                        <!-- a Stripe element will be inserted here -->
+                    </div>
+
+                    <!-- Used to display form errors -->
+                    <div id="card-errors" class="displayError.textContent!=='': 'alert alert-danger mt-1'"></div>
+
+                </div>
+
+                <div class="form-area">
+                    <h3>Order Details</h3>
+                    <p>Number of Items: {{totalQuantity}}</p>
+                    <p>Total Price: {{totalPrice | currency: 'INR'}}</p>
+                </div>                
+
+            <div class="text-center" >
+                <button type="submit" class="btn btn-info" [disabled]="isDisabled">Purchase</button>
+            </div>
+        </form>
+
+
+        </div>
+    </div>
+</div>

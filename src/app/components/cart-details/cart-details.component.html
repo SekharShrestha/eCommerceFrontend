@@ -1,0 +1,65 @@
+<div class="main-content">
+    <div class="section-content">
+        <div class="container-fluid">
+
+            <div *ngIf="cartItems.length > 0">
+            <table class="table table-bordered">
+                <tr>
+                    <th width="20%">Image</th>
+                    <th width="50%">Details</th>
+                    <th width="30%"></th>
+                </tr>
+
+                <tr *ngFor="let i of cartItems">
+                    <td>
+                        <img src="{{i.imageUrl}}" class="img-responsive" width="150px"/>
+                    </td>
+                    <td>
+                        <p>{{i.name}}</p>
+                        <p>{{i.unitPrice | currency: 'INR'}}</p>
+                    </td>
+                    <td>
+                        <div class="items">
+                            <label>Quantity:</label>  
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <button (click)="decrementQty(i)" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+
+                            <div class="col ml-4 mr-2">{{i.quantity}}</div> 
+
+                                <div class="col">
+                                    <button (click)="incrementQty(i)" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="col-8"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <button (click)="remove(i)" class="btn btn-info btn-sm mt-2">Remove</button>
+                        </div>
+                        <p>Subtotal: {{i.quantity * i.unitPrice | currency: 'INR'}}</p>
+                    </td>
+                </tr>
+
+                <tr class="text-center">
+                    <!-- <td colspan="2"></td> -->
+                    <td style="font-weight: bold">
+                        <!-- <p>Total Quantity: {{totalQuantity}}</p> -->
+                        <p>Total Price:<h3>{{totalPrice | currency: 'INR'}}</h3>
+                        
+                        <div><a routerLink="/checkout" class="btn btn-info">Checkout</a></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="text-center" *ngIf="cartItems.length == 0">
+            <h2>Cart is Empty</h2>
+        </div>
+        </div>
+    </div>
+</div>
